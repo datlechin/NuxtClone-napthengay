@@ -237,7 +237,7 @@ export default {
                   <v-btn
                     x-small
                     fab
-                    :disabled="form.quantity === 0 || form.denomination === 0"
+                    :disabled="form.quantity === 1 || form.denomination === 0"
                     class="mx-2 btn-add"
                     @click="form.quantity--"
                   >
@@ -358,7 +358,7 @@ export default {
             </v-progress-circular>
           </div>
           <div class="subtitle-1 black--text">
-            Vui lòng chọn nhà cung cấp thẻ!
+            <!-- show first message hereA -->
           </div>
         </v-card-text>
         <v-card-actions>
