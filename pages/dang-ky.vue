@@ -99,12 +99,14 @@ export default {
   <div class="mx-auto col-sm-8 col-md-4 col-12">
     <v-card elevation="12">
       <v-card-text>
-        <div class="row justify-center">
-          <v-img
-            src="https://napthengay.vn/new_logo_napthenay_black.png"
-            max-width="250"
-            max-height="250"
-          />
+        <div class="py-3 row justify-center">
+          <NuxtLink to="/">
+            <v-img
+              src="https://napthengay.vn/new_logo_napthenay_black.png"
+              max-width="250"
+              max-height="250"
+            />
+          </NuxtLink>
         </div>
         <div class="text-center display-1 black--text mt-3">Đăng ký</div>
         <v-divider class="mb-8 mt-6" />

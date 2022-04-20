@@ -8,9 +8,6 @@ export default {
   mixins: [validationMixin],
   data: () => ({
     username: null,
-    password: null,
-    remember: false,
-    showPasswrod: false,
   }),
   methods: {
     submit() {
@@ -22,9 +19,6 @@ export default {
       required,
       emailOrPhone: or(email, phone),
     },
-    password: {
-      required,
-    },
   },
   computed: {
     usernameErrors() {
@@ -34,12 +28,6 @@ export default {
         errors.push('Vui lòng nhập số điện thoại hoặc email')
       !this.$v.username.emailOrPhone &&
         errors.push('Số điện thoại hoặc email không hợp lệ')
-      return errors
-    },
-    passwordErrors() {
-      const errors = []
-      if (!this.$v.password.$dirty) return errors
-      !this.$v.password.required && errors.push('Vui lòng nhập mật khẩu')
       return errors
     },
   },
@@ -59,7 +47,7 @@ export default {
             />
           </NuxtLink>
         </div>
-        <div class="text-center display-1 black--text mt-3">Đăng nhập</div>
+        <div class="text-center display-1 black--text mt-3">Quên mật khẩu</div>
         <v-divider class="mb-8 mt-6" />
         <v-form @submit.prevent="submit">
           <v-text-field
@@ -68,37 +56,23 @@ export default {
             outlined
             label="Tài khoản"
             placeholder="Số điện thoại/Email"
-            prepend-icon="mdi-account"
             @input="$v.username.$touch()"
             @blur="$v.username.$touch()"
           />
-          <v-text-field
-            v-model="password"
-            :error-messages="passwordErrors"
-            :type="showPasswrod ? 'text' : 'password'"
-            outlined
-            label="Mật khẩu"
-            prepend-icon="mdi-lock"
-            :append-icon="showPasswrod ? 'mdi-eye' : 'mdi-eye-off'"
-            @click:append="showPasswrod = !showPasswrod"
-            @input="$v.password.$touch()"
-            @blur="$v.password.$touch()"
-          />
-          <v-checkbox
-            class="mt-0 pt-0"
-            v-model="remember"
-            label="Nhớ mật khẩu"
-          />
-          <v-btn color="primary" large block type="submit">Đăng nhập</v-btn>
+          <v-btn color="primary" large block type="submit"
+            >Lấy lại mật khẩu</v-btn
+          >
           <v-divider />
-          <div class="ma-2 subtitle-1 text-center">
-            Chưa có tài khoản?
-            <NuxtLink to="/dang-ky"> Đăng ký ngay </NuxtLink>
-          </div>
-          <v-row justify="center">
-            <v-col cols="6" sm="6" class="subtitle-1 pa-2 pt-4 text-center">
+          <v-row>
+            <v-col cols="6" sm="6" class="subtitle-1 pa-2 text-left">
               <v-icon size="16" color="primary">mdi-account-key</v-icon>
-              <NuxtLink to="/quen-mat-khau"> Quên mật khẩu? </NuxtLink>
+              <NuxtLink to="/dang-ky" class="no-underline"> Đăng ký? </NuxtLink>
+            </v-col>
+            <v-col cols="6" sm="6" class="subtitle-1 pa-2 text-right">
+              <v-icon size="16" color="primary">mdi-email</v-icon>
+              <NuxtLink to="/dang-nhap" class="no-underline">
+                Đăng nhập ngay
+              </NuxtLink>
             </v-col>
           </v-row>
         </v-form>
