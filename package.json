@@ -1,0 +1,25 @@
+{
+  "name": "nuxtjs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && nuxt",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && nuxt build",
+    "start": "nuxt start",
+    "generate": "SET NODE_OPTIONS=--openssl-legacy-provider && nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "core-js": "^3.19.3",
+    "nuxt": "^2.15.8",
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "vuelidate": "^0.7.7",
+    "vuetify": "^2.6.1",
+    "webpack": "^4.46.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3"
+  }
+}
