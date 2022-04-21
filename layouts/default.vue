@@ -143,8 +143,33 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer class="global-footer">
+      <v-row>
+        <v-col cols="12" md="6">
+          <div class="footer-row">
+            <NuxtLink to="/">
+              <v-img :src="logo.dark" max-width="152" />
+            </NuxtLink>
+          </div>
+          <div class="footer-row">
+            <strong>CÔNG TY CỔ PHẦN FUNTEK VIỆT NAM</strong>
+          </div>
+          <div class="footer-row">
+            Giấy chứng nhận đăng ký kinh doanh số: 0109054589 do Sở kế hoạch đầu
+            tư Thành phố Hà Nội cấp ngày 06/01/2020
+          </div>
+          <div class="footer-row">
+            Hotline: <a href="tel:0776395737">0776 395 737</a> -
+            <a href="tel:0819323193">0819 323 193</a>
+          </div>
+          <div class="footer-row">
+            Email: <a href="mail:hotro@napthengay.vn">hotro@napthengay.vn</a>
+          </div>
+        </v-col>
+        <v-col cols="12" md="6">
+          
+        </v-col>
+      </v-row>
     </v-footer>
   </v-app>
 </template>
@@ -221,5 +246,16 @@ a:hover {
 
 .v-list-item__icon {
   margin-right: 8px !important;
+}
+.global-footer {
+  width: 100%;
+  padding: 40px 20px 20px;
+  background-color: #efefef;
+  justify-content: center;
+  margin: 0 !important;
+}
+.global-footer .footer-row {
+  padding: 10px;
+  border-bottom: 1px solid #efefef;
 }
 </style>

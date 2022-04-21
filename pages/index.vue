@@ -6,6 +6,7 @@ export default {
   mixins: [validationMixin],
   data: () => ({
     dialog: false,
+    snackbar: true,
     API_URL: 'https://api.napthengay.vn/card/api/pm',
     API_QUERY:
       'channel=NTN_WEB&sale_channel_code=NTN_WEB&transid=2pee0e9txl1d0t23k-2pee0e9txl1d0t23l',
@@ -264,6 +265,9 @@ export default {
               />
             </div>
           </v-list-item-group>
+          <v-item-group class="hidden-md-and-up">
+            <v-btn block large color="accent" @click="submit">Tiếp tục</v-btn>
+          </v-item-group>
         </v-col>
         <v-col cols="12" md="4" class="hidden-sm-and-down">
           <v-list-item-group>
@@ -349,6 +353,35 @@ export default {
         </v-col>
       </v-row>
     </div>
+    <v-snackbar
+      v-model="snackbar"
+      timeout="-1"
+      color="white"
+      light
+      width="100%"
+    >
+      <div class="body-1 text-center mb-4 primary--text">
+        Đăng nhập để kiểm tra lịch sử mua thẻ, tích điểm và nhận quà !
+      </div>
+      <v-btn
+        @click="snackbar = false"
+        icon
+        x-small
+        style="position: absolute; top: 0; right: 0"
+      >
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+      <v-row>
+        <v-col cols="6">
+          <v-btn to="/dang-nhap" block outlined color="primary"
+            >Đăng nhập</v-btn
+          >
+        </v-col>
+        <v-col cols="6">
+          <v-btn to="/dang-ky" block outlined color="success">Đăng ký</v-btn>
+        </v-col>
+      </v-row>
+    </v-snackbar>
     <v-dialog v-model="dialog" max-width="290">
       <v-card>
         <v-card-text class="pb-0 pt-4">
@@ -530,5 +563,10 @@ export default {
 
 .item-disabled {
   background: #e3e3e3;
+}
+.body-1 {
+  font-size: 1rem !important;
+  letter-spacing: 0.03125em !important;
+  line-height: 1.5rem;
 }
 </style>
