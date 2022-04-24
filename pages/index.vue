@@ -84,7 +84,9 @@ export default {
     // handle submit
     submit() {
       this.$v.$touch()
-      if (this.$v.$invalid) this.dialog = true
+      if (this.$v.$invalid) {
+        this.dialog = true
+      }
     },
   },
   computed: {
@@ -104,6 +106,20 @@ export default {
         errors.push('Vui lòng nhập địa chỉ email')
       !this.$v.form.receiver_email.email &&
         errors.push('Địa chỉ email không hợp lệ')
+      return errors
+    },
+    publisherErrors() {
+      const errors = []
+      if (!this.$v.form.publisher.$dirty) return errors
+      !this.$v.form.publisher.required &&
+        errors.push('Vui lòng chọn nhà phát hành')
+      return errors
+    },
+    denoErrors() {
+      const errors = []
+      if (!this.$v.form.denomination.$dirty) return errors
+      !this.$v.form.denomination.required &&
+        errors.push('Vui lòng chọn mệnh giá')
       return errors
     },
   },
@@ -391,7 +407,15 @@ export default {
             </v-progress-circular>
           </div>
           <div class="subtitle-1 black--text">
-            <!-- show first message hereA -->
+            {{
+              emailErrors
+                ? emailErrors[0]
+                : publisherErrors
+                ? publisherErrors[0]
+                : denoErrors
+                ? denoErrors[0]
+                : 'Có lỗi xảy ra'
+            }}
           </div>
         </v-card-text>
         <v-card-actions>
